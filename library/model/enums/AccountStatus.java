@@ -1,0 +1,7 @@
+package library.model.enums;
+
+public enum AccountStatus {
+    ACTIVE,
+    SUSPENDED,
+    EXPIRED
+}
