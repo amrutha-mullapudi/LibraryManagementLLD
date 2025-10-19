@@ -1,3 +1,4 @@
+```mermaid
 classDiagram
     LibraryItem <|-- Book
     Book "1" -- "*" BookCopy
