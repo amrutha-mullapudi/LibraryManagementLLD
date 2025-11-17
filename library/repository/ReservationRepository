@@ -1,0 +1,52 @@
+package repository;
+
+import model.Reservation;
+
+import java.util.*;
+
+public class ReservationRepository {
+    private final Map<String, Reservation> reservationStorage = new HashMap<>();
+
+    // Add a reservation
+    public void add(Reservation reservation) {
+        reservationStorage.put(reservation.getReservationId(), reservation);
+    }
+
+    // Remove a reservation
+    public void remove(String reservationId) {
+        reservationStorage.remove(reservationId);
+    }
+
+    // Update a reservation
+    public void update(Reservation reservation) {
+        reservationStorage.put(reservation.getReservationId(), reservation);
+    }
+
+    // Find reservation by ID
+    public Optional<Reservation> findById(String reservationId) {
+        return Optional.ofNullable(reservationStorage.get(reservationId));
+    }
+
+    // Find all reservations
+    public List<Reservation> findAll() {
+        return new ArrayList<>(reservationStorage.values());
+    }
+
+    // Find reservations by patronId
+    public List<Reservation> findByPatronId(String patronId) {
+        List<Reservation> result = new ArrayList<>();
+        for (Reservation res : reservationStorage.values()) {
+            if (res.getPatronId().equals(patronId)) result.add(res);
+        }
+        return result;
+    }
+
+    // Find reservations by itemId
+    public List<Reservation> findByItemId(String itemId) {
+        List<Reservation> result = new ArrayList<>();
+        for (Reservation res : reservationStorage.values()) {
+            if (res.getItemId().equals(itemId)) result.add(res);
+        }
+        return result;
+    }
+}
